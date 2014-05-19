@@ -52,24 +52,6 @@ class Harbor
     send "get_#{ship.type}_ship", ship
   end
 
-  def get_cargo_ship ship
-    if cargo_capacity > @cargo_ships.count #dlina massiva
-        @cargo_ships.push ship
-        ship.come_in_port name
-      else 
-        puts "No cargo places"
-      end
-  end 
-  
-  def get_passenger_ship ship
-    if passenger_capacity > @passenger_ships.count #dlina massiva
-        @passenger_ships.push ship
-        ship.come_in_port name
-      else 
-        puts "No passenger places" 
-      end
-  end
-
   def del_ship ship       #vihod korabl9 iz porta
     if ship.type == "cargo"
       if ship.capacity > 0
@@ -107,6 +89,26 @@ class Harbor
   def print_ships         #spisok gruzovih i pasagirskih korablei
     puts "Cargo: "+ cargo_ships.join(", ")
     puts "Passengers: " + passenger_ships.join(", ") 
+  end
+  
+private
+
+  def get_cargo_ship ship
+    if cargo_capacity > @cargo_ships.count #dlina massiva
+       @cargo_ships.push ship
+       ship.come_in_port name
+     else 
+       puts "No cargo places"
+     end
+  end 
+  
+  def get_passenger_ship ship
+    if passenger_capacity > @passenger_ships.count #dlina massiva
+      @passenger_ships.push ship
+      ship.come_in_port name
+    else 
+      puts "No passenger places" 
+    end
   end
 end
 
