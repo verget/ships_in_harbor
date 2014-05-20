@@ -22,17 +22,6 @@ class Harbor
     send "del_#{ship.type}_ship", ship
   end
   
-  def del_cargo_ship ship
-    if ship.capacity > 0
-      puts "You fool and can't go"
-    else   
-      @cargo_ships.delete ship
-    end
-  end
-  
-  def del_passenger_ship ship
-    @passenger_ships.delete ship
-  end
 
   def loading ship        #pogruzka\razgruzka korablei
     if ship.type == "cargo"
@@ -62,6 +51,18 @@ class Harbor
   end
   
 private
+
+  def del_cargo_ship ship
+    if ship.capacity > 0
+      puts "You fool and can't go"
+    else   
+      @cargo_ships.delete ship
+    end
+  end
+  
+  def del_passenger_ship ship
+    @passenger_ships.delete ship
+  end
 
   def get_cargo_ship ship
     if cargo_capacity > @cargo_ships.count #dlina massiva
