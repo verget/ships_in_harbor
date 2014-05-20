@@ -1,6 +1,8 @@
+
 require_relative "harbor"
 require_relative "passenger_ship"
 require_relative "cargo_ship"
+
 pearl = Harbor.new("PearlHarbor",1890,2,2,1)
 first = PassengerShip.new("Beda", 1992, 10)
 second = PassengerShip.new("Pobeda", 1993, 5)

@@ -19,15 +19,19 @@ class Harbor
   end
 
   def del_ship ship       #vihod korabl9 iz porta
-    if ship.type == "cargo"
-      if ship.capacity > 0
-        puts "You fool and can't go"
-      else   
-        @cargo_ships.delete ship
-      end
-    else
-     @passenger_ships.delete ship
+    send "del_#{ship.type}_ship", ship
+  end
+  
+  def del_cargo_ship ship
+    if ship.capacity > 0
+      puts "You fool and can't go"
+    else   
+      @cargo_ships.delete ship
     end
+  end
+  
+  def del_passenger_ship ship
+    @passenger_ships.delete ship
   end
 
   def loading ship        #pogruzka\razgruzka korablei
@@ -51,7 +55,7 @@ class Harbor
       puts "It's not a cargo ship"
     end
   end
-
+  
   def print_ships         #spisok gruzovih i pasagirskih korablei
     puts "Cargo: "+ cargo_ships.join(", ")
     puts "Passengers: " + passenger_ships.join(", ") 
